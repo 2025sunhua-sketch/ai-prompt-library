@@ -1,0 +1,82 @@
+{
+  "category": "图像生成区",
+  "description": "电商视觉素材提示词模板（精选自 PromptHero 等平台）",
+  "templates": [
+    {
+      "id": "img-001",
+      "title": "白底产品展示图 - 电子产品",
+      "scenario": "产品摄影",
+      "tags": ["白底图", "电子产品", "电商主图"],
+      "model": "Midjourney V6 / Stable Diffusion XL",
+      "prompt": "Professional product photography of a wireless bluetooth headset, pure white background, studio lighting, ultra-detailed, 8k resolution, commercial grade, clean composition, no shadows --ar 1:1 --style raw --v 6.0",
+      "prompt_cn": "专业产品摄影，无线蓝牙耳机，纯白背景，影棚灯光，超细节，8K 分辨率，商业级，简洁构图，无阴影",
+      "parameters": {
+        "aspect_ratio": "1:1",
+        "style": "raw",
+        "version": "6.0"
+      },
+      "usage_tips": "适合亚马逊、天猫等电商平台主图，白色背景便于后期抠图",
+      "reference_url": "https://prompthero.com/search?query=product+photography"
+    },
+    {
+      "id": "img-002",
+      "title": "生活方式场景图 - 家居用品",
+      "scenario": "场景渲染",
+      "tags": ["场景图", "家居", "生活方式"],
+      "model": "Midjourney V6",
+      "prompt": "A cozy modern living room with minimalist furniture, warm natural lighting from large windows, a ceramic vase on wooden coffee table, indoor plants, Scandinavian style, photorealistic, interior design magazine quality --ar 16:9 --v 6.0",
+      "prompt_cn": "舒适的现代客厅，极简主义家具，大窗户透入温暖自然光，木质茶几上的陶瓷花瓶，室内植物，北欧风格，照片级真实，室内设计杂志品质",
+      "parameters": {
+        "aspect_ratio": "16:9",
+        "version": "6.0"
+      },
+      "usage_tips": "适合家居类产品的情景展示，营造使用氛围",
+      "reference_url": "https://prompthero.com/search?query=interior+design"
+    },
+    {
+      "id": "img-003",
+      "title": "促销海报背景 - 节日主题",
+      "scenario": "营销海报",
+      "tags": ["海报", "促销", "节日"],
+      "model": "Midjourney V6 / DALL-E 3",
+      "prompt": "Festive sale banner background, Chinese New Year theme, red and gold color scheme, lanterns and firecrackers decorations, elegant traditional patterns, space for text in center, commercial design, vector style --ar 3:4 --v 6.0",
+      "prompt_cn": "节日促销海报背景，春节主题，红金色调，灯笼和鞭炮装饰，优雅传统纹样，中央留白用于放置文字，商业设计，矢量风格",
+      "parameters": {
+        "aspect_ratio": "3:4",
+        "version": "6.0"
+      },
+      "usage_tips": "适合春节、双 11 等促销活动，可在留白处添加产品信息",
+      "reference_url": "https://prompthero.com/search?query=sale+banner"
+    },
+    {
+      "id": "img-004",
+      "title": "社交媒体配图 - 小红书风格",
+      "scenario": "社交媒体",
+      "tags": ["小红书", "社交媒体", "竖版图"],
+      "model": "Midjourney V6",
+      "prompt": "Instagram post aesthetic, flat lay composition, beauty products arranged on marble surface, eucalyptus leaves, soft pastel colors, natural sunlight shadows, feminine and elegant, influencer style --ar 4:5 --v 6.0",
+      "prompt_cn": "Instagram 帖子美学，俯拍构图，美容产品摆放在大理石表面，桉树叶，柔和粉彩色调，自然阳光阴影，女性化且优雅，网红风格",
+      "parameters": {
+        "aspect_ratio": "4:5",
+        "version": "6.0"
+      },
+      "usage_tips": "适合小红书、Instagram 等社交平台，竖版比例更适合移动端浏览",
+      "reference_url": "https://prompthero.com/search?query=instagram+flat+lay"
+    },
+    {
+      "id": "img-005",
+      "title": "包装设计参考 - 高端礼盒",
+      "scenario": "包装设计",
+      "tags": ["包装", "礼盒", "高端"],
+      "model": "Midjourney V6",
+      "prompt": "Luxury gift box packaging design, matte black finish with gold foil stamping, minimalist typography, magnetic closure, premium paper texture, studio lighting, product photography, elegant and sophisticated --ar 1:1 --v 6.0",
+      "prompt_cn": "高端礼盒包装设计，哑光黑色配烫金工艺，极简排版，磁吸开合，优质纸张质感，影棚灯光，产品摄影，优雅精致",
+      "parameters": {
+        "aspect_ratio": "1:1",
+        "version": "6.0"
+      },
+      "usage_tips": "适合高端产品包装参考，可调整颜色和材质描述适配不同产品",
+      "reference_url": "https://prompthero.com/search?query=luxury+packaging"
+    }
+  ]
+}

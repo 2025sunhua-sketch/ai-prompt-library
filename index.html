@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 者华歌 - 市场经营户提示词库</title>
+    <meta name="description" content="专为市场经营户打造的垂直领域提示词工具箱，提供商务文本、图像生成、GEO 优化三大模块的实战模板">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <h1>🎯 AI 者华歌</h1>
+                <p class="tagline">市场经营户的 AI 实战工具箱</p>
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="nav-link active" data-module="business">生活工作区</a>
+                <a href="#" class="nav-link" data-module="image">图像生成区</a>
+                <a href="#" class="nav-link" data-module="geo">GEO 优化区</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="container">
+        <!-- 模块介绍横幅 -->
+        <section id="module-intro" class="intro-banner">
+            <h2 id="intro-title">生活工作区</h2>
+            <p id="intro-desc">商务场景文本生成提示词模板，涵盖客户开发、询盘回复、竞品调研等实用场景</p>
+        </section>
+
+        <!-- 搜索和筛选栏 -->
+        <section class="search-section">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="搜索提示词模板...">
+                <button id="search-btn">🔍 搜索</button>
+            </div>
+            <div class="filter-tags" id="filter-tags">
+                <!-- 动态加载标签过滤器 -->
+            </div>
+        </section>
+
+        <!-- 模板列表区 -->
+        <section id="templates-container" class="templates-grid">
+            <!-- 动态加载模板卡片 -->
+        </section>
+
+        <!-- 空状态提示 -->
+        <div id="empty-state" class="empty-state" style="display: none;">
+            <p>😕 未找到匹配的模板，试试其他关键词？</p>
+        </div>
+    </main>
+
+    <!-- 模板详情弹窗 -->
+    <div id="template-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title">模板标题</h2>
+            <div class="modal-meta">
+                <span class="meta-tag" id="modal-scenario">场景：客户开发</span>
+                <span class="meta-tag" id="modal-tags">标签：外贸，开发信</span>
+            </div>
+            <div class="modal-body">
+                <div class="prompt-section">
+                    <h3>📝 提示词内容</h3>
+                    <pre id="modal-prompt" class="prompt-text"></pre>
+                    <button class="copy-btn" id="copy-prompt-btn">📋 一键复制</button>
+                </div>
+                <div class="tips-section">
+                    <h3>💡 使用建议</h3>
+                    <p id="modal-tips"></p>
+                </div>
+                <div class="example-section" id="modal-example-container">
+                    <h3>✨ 示例输出</h3>
+                    <pre id="modal-example" class="example-text"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 AI 者华歌 | 免费提示词库 | <a href="https://from2045.com" target="_blank">灵感来源</a></p>
+            <p class="disclaimer">本站所有模板仅供学习参考，纯前端运行，不收集任何用户数据</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
