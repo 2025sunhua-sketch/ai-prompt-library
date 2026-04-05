@@ -1,29 +1,65 @@
 @echo off
 chcp 65001 >nul
+title GitHub Pages 初始化脚本 - AI Prompt Library
+
+:: 显示欢迎信息
 echo ========================================
 echo   GitHub Pages 初始化脚本
 echo   AI Prompt Library
 echo ========================================
 echo.
+echo 本脚本将帮助你：
+echo 1. 初始化 Git 仓库
+echo 2. 配置用户信息
+echo 3. 提交所有文件
+echo 4. 配置远程仓库
+echo 5. 推送到 GitHub Pages
+echo.
+echo 按任意键开始...
+pause >nul
+echo.
 
 :: 检查 Git 是否安装
+echo [检查] 正在检测 Git 安装...
 git --version >nul 2>&1
 if %errorlevel% neq 0 (
+    echo.
     echo [错误] 未检测到 Git，请先安装 Git
     echo 下载地址：https://git-scm.com/downloads
-    pause
+    echo.
+    echo 按任意键退出...
+    pause >nul
     exit /b 1
 )
 
 echo [√] Git 已安装
+git --version
 echo.
 
 :: 初始化 Git 仓库
 echo [步骤 1/5] 初始化 Git 仓库...
-git init
+echo.
+
+:: 检查是否已经初始化过
+if exist ".git" (
+    echo [提示] 检测到已存在的 Git 仓库
+    set /p REINIT="是否重新初始化？(y/n，默认 n): "
+    if /i not "%REINIT%"=="y" (
+        echo [跳过] 使用现有 Git 仓库
+        echo.
+    ) else (
+        echo [警告] 重新初始化将保留现有数据，但会重置配置
+        git init
+    )
+) else (
+    git init
+)
+
 if %errorlevel% neq 0 (
+    echo.
     echo [错误] Git 初始化失败
-    pause
+    echo 按任意键退出...
+    pause >nul
     exit /b 1
 )
 echo [√] Git 仓库初始化完成
@@ -31,13 +67,30 @@ echo.
 
 :: 配置 Git 用户信息
 echo [步骤 2/5] 配置 Git 用户信息
+echo.
+
+:: 检查是否已有配置
+git config user.name >nul 2>&1
+if %errorlevel% equ 0 (
+    echo [提示] 当前配置的用户名：git config user.name
+    echo [提示] 当前配置的邮箱：git config user.email
+    set /p CHANGE_CONFIG="是否修改用户信息？(y/n，默认 n): "
+    if /i not "%CHANGE_CONFIG%"=="y" (
+        echo [跳过] 使用现有配置
+        echo.
+        goto :configure_remote
+    )
+)
+
 set /p GIT_NAME="请输入你的 Git 用户名（GitHub 账号名）: "
-set /p GIT_EMAIL="请输入你的 Git 邮箱: "
+set /p GIT_EMAIL="请输入你的 Git 邮箱："
 
 git config user.name "%GIT_NAME%"
 git config user.email "%GIT_EMAIL%"
 echo [√] Git 用户信息配置完成
 echo.
+
+:configure_remote
 
 :: 添加所有文件
 echo [步骤 3/5] 添加所有文件到 Git...
@@ -110,7 +163,10 @@ if /i "%CONFIRM%"=="y" (
         echo - 仓库不存在或未正确创建
         echo - 身份验证失败（HTTPS 方式需要使用 Token）
         echo - SSH 密钥未配置
+        echo - Clash 等代理软件干扰（请临时关闭或配置直连）
         echo.
+        echo 按任意键继续...
+        pause >nul
     )
 ) else (
     echo.

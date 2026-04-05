@@ -32,8 +32,16 @@
 ## 技术栈
 - **前端**：HTML5 + CSS3 + Vanilla JavaScript
 - **数据格式**：JSON (存储在 `/data/` 目录)
-- **部署平台**：Cloudflare Pages (Direct Upload)
+- **部署平台**：GitHub Pages（推荐）或 Cloudflare Pages
 - **核心特性**：零成本、纯前端、本地化处理、隐私安全
+
+## 非商业化声明
+⚠️ **重要声明**：
+- 本项目由"AI 者华歌"维护，完全免费开放
+- 所有提示词模板仅供学习参考，不构成商业建议
+- 纯前端运行，不收集任何用户数据
+- 禁止将本项目的模板库用于商业售卖或付费课程
+- 欢迎个人学习使用和商业场景应用，无需授权
 
 ## 目录结构
 ```
@@ -64,11 +72,115 @@ ai-prompt-library/
 5. **响应式设计**：适配桌面端和移动端
 
 ## 部署步骤
-1. 完成本地开发测试
-2. 登录 Cloudflare Dashboard → Pages → Create a project
-3. 选择 "Direct upload" 模式
-4. 上传整个项目文件夹
-5. 绑定自定义域名（可选）
+
+### 方式一：GitHub Pages 部署（推荐）
+
+#### 快速部署（使用 init-git.bat）
+```bash
+# Windows 用户直接运行
+cd ai-prompt-library
+init-git.bat
+
+# 脚本会自动执行以下操作：
+# 1. 初始化 Git 仓库
+# 2. 配置 Git 用户信息（需要手动输入）
+# 3. 创建 main 分支
+# 4. 提交所有文件
+# 5. 推送到 GitHub 远程仓库
+```
+
+#### 手动部署步骤
+```bash
+# 1. 进入项目目录
+cd ai-prompt-library
+
+# 2. 初始化 Git 仓库（如果还没有）
+git init
+
+# 3. 配置 Git 用户身份（必须）
+git config --global user.name "你的 GitHub 用户名"
+git config --global user.email "你的 GitHub 邮箱"
+
+# 4. 添加所有文件并提交
+git add .
+git commit -m "✨ AI 者华歌提示词库初版完成"
+
+# 5. 重命名分支为 main（GitHub 默认分支名）
+git branch -M main
+
+# 6. 添加远程仓库地址（替换为你的仓库 URL）
+git remote add origin git@github.com:你的用户名/ai-prompt-library.git
+
+# 7. 推送到 GitHub
+git push -u origin main
+```
+
+#### 启用 GitHub Pages
+1. 打开 GitHub 仓库页面
+2. 点击 **Settings** → **Pages**
+3. Source 选择：**Deploy from a branch**
+4. Branch 选择：**main** / folder: **/** (root)
+5. 点击 **Save**
+6. 等待 1-2 分钟，页面会显示访问地址
+   - 格式：`https://你的用户名.github.io/ai-prompt-library/`
+
+#### 绑定自定义域名（可选）
+1. 在 GitHub Pages 设置页面，点击 **Custom domain**
+2. 输入你的域名：`prompt.from2045.com`
+3. 点击 **Save**
+4. 在 DNS 服务商处添加 CNAME 记录：
+   ```
+   类型：CNAME
+   主机记录：prompt
+   记录值：你的用户名.github.io
+   TTL: 自动
+   ```
+
+### 方式二：Cloudflare Pages 部署
+
+#### Direct Upload（无需 Git）
+1. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com)
+2. 左侧菜单：**Workers & Pages** → **Create application**
+3. 选择 **Pages** → **Direct upload**
+4. 将整个 `ai-prompt-library/` 文件夹拖拽到上传区域
+5. 点击 **Deploy**
+6. 等待 10-30 秒即可上线
+
+#### 绑定自定义域名
+1. Pages 设置 → **Custom domains**
+2. 添加域名：`prompt.from2045.com`
+3. Cloudflare 会自动配置 DNS 记录
+
+### 故障排查
+
+#### 问题 1：Git 推送失败，报错 "no upstream branch"
+**原因**：分支名称与远程不一致
+**解决**：
+```bash
+git branch -M main
+git push -u origin main
+```
+
+#### 问题 2：SSH 连接被代理软件劫持
+**原因**：Clash Verge 虚拟网卡模式劫持 Git SSH 流量
+**解决**：
+- 方案 A：临时关闭 Clash 的 TUN 模式
+- 方案 B：在 Clash 规则中添加 GitHub 域名直连 (DIRECT)
+
+#### 问题 3：部署后样式丢失（CSS 不生效）
+**原因**：HTML/CSS/JS 文件换行符丢失，被保存为单行
+**解决**：
+- 重新上传包含正确换行符的文件
+- 检查文件编码是否为 UTF-8
+- 清除浏览器缓存后重试
+
+#### 问题 4：首次 SSH 连接卡住
+**原因**：需要手动确认 GitHub 主机密钥
+**解决**：
+```bash
+ssh -T git@github.com
+# 当出现提示时，输入 yes 并回车
+```
 
 ## 与通用提示词平台的差异化
 - **垂直聚焦**：专注市场经营户场景，非通用型库
